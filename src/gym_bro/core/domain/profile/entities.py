@@ -8,8 +8,8 @@ from gym_bro.core.domain.profile.value_objects import ProfileID
 class Profile:
     id: ProfileID
     first_name: str
-    last_name: str | None = None
     telegram_id: int
+    last_name: str | None = None
 
     def __post_init__(self) -> None:
         self.first_name = self.first_name.strip()

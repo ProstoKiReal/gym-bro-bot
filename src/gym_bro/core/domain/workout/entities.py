@@ -11,7 +11,7 @@ from gym_bro.core.domain.workout.value_objects import (
 )
 
 
-@dataclass(slots=True)
+@dataclass
 class Exercise:
     id: ExerciseID
     name: str
@@ -23,7 +23,7 @@ class Exercise:
             raise InvalidNameError(self.name)
 
 
-@dataclass(slots=True)
+@dataclass
 class WorkoutSet:
     id: SetID
     reps: Reps
@@ -37,7 +37,7 @@ class PlannedSet:
     target_load: Weight | None = None
 
 
-@dataclass(slots=True)
+@dataclass
 class WorkoutExercise:
     id: WorkoutExerciseID
     exercise_id: ExerciseID
@@ -55,7 +55,7 @@ class WorkoutExercise:
         self.sets.append(workout_set)
 
 
-@dataclass(slots=True)
+@dataclass
 class PlannedExercise:
     exercise_id: ExerciseID
     name: str

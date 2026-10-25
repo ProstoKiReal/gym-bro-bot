@@ -9,14 +9,14 @@ from gym_bro.core.domain.profile.value_objects import ProfileID
 @dataclass
 class BodyWeight:
     id: BodyWeightID
-    weight: int
+    weight_grams: int
     date: date
     profile_id: ProfileID
 
     def __post_init__(self):
-        if self.weight <= 0:
-            raise InvalidWeightError(self.weight)
-
-    @property
-    def weight(self) -> float:
-        return self.weight / 1000
+        if (
+            isinstance(self.weight_grams, bool)
+            or not isinstance(self.weight_grams, int)
+            or self.weight_grams <= 0
+        ):
+            raise InvalidWeightError(self.weight_grams)

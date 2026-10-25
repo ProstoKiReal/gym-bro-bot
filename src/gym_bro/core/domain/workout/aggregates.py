@@ -15,7 +15,7 @@ from gym_bro.core.domain.workout.value_objects import (
 )
 
 
-@dataclass(slots=True)
+@dataclass
 class Workout:
     id: WorkoutID
     profile_id: ProfileID
@@ -41,7 +41,7 @@ class Workout:
         self.ended_at = ended_at
 
 
-@dataclass(slots=True)
+@dataclass
 class WorkoutTemplate:
     id: WorkoutTemplateID
     profile_id: ProfileID
@@ -57,7 +57,7 @@ class WorkoutTemplate:
         self.exercises.append(exercise)
 
 
-@dataclass(slots=True)
+@dataclass
 class WorkoutProgram:
     id: WorkoutProgramID
     profile_id: ProfileID

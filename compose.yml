@@ -1,0 +1,49 @@
+services:
+  bot:
+    container_name: bot
+    build: .
+    restart: always
+    volumes:
+      - ./src/:/gym_bro/src/
+    working_dir: /gym_bro
+    environment:
+      - PYTHONPATH=/gym_bro/src
+      - BOT_TOKEN=${BOT_TOKEN}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_PASSWORD=${DB_PASSWORD}
+    command: sh -c "alembic upgrade head  && python src/gym_bro/main.py"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app_net
+
+  db:
+    container_name: db
+    image: postgres:18-alpine
+    volumes:
+      - db-data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app_net
+    restart: always
+
+networks:
+  app_net:
+    driver: bridge
+
+volumes:
+  db-data:
