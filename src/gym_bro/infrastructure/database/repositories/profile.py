@@ -24,7 +24,12 @@ class AlchemyProfileRepository(ProfileRepository):
         query = (
             update(ProfileModel)
             .where(ProfileModel.id == profile.id.value)
-            .values(first_name=profile.first_name, last_name=profile.last_name)
+            .values(
+                first_name=profile.first_name,
+                last_name=profile.last_name,
+                gender=profile.gender,
+                weight=profile.weight,
+            )
         )
         await self.session.execute(query)
 
@@ -35,6 +40,8 @@ class AlchemyProfileRepository(ProfileRepository):
             first_name=profile.first_name,
             telegram_id=profile.telegram_id,
             last_name=profile.last_name,
+            gender=profile.gender,
+            weight=profile.weight,
         )
 
     @staticmethod
@@ -44,4 +51,6 @@ class AlchemyProfileRepository(ProfileRepository):
             first_name=profile.first_name,
             last_name=profile.last_name,
             telegram_id=profile.telegram_id,
+            gender=profile.gender,
+            weight=profile.weight,
         )
