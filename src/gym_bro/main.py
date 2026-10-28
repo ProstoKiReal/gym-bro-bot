@@ -1,6 +1,6 @@
 import asyncio
 
-from gym_bro.bot.setup import run_bot
+from gym_bro.presentation.bot.setup import run_bot
 
 
 async def main():

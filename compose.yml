@@ -14,6 +14,9 @@ services:
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
       - DB_PASSWORD=${DB_PASSWORD}
+      - DB_POOL_SIZE=${DB_POOL_SIZE}
+      - DB_POOL_MAX_OVERFLOW=${DB_POOL_MAX_OVERFLOW}
+      - APP_MODE=${APP_MODE}
     command: sh -c "alembic upgrade head  && python src/gym_bro/main.py"
     depends_on:
       db:
