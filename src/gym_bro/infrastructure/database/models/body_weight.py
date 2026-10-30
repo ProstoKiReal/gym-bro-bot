@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Date, ForeignKey, Index, Integer, Table, Uuid
+from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, Table, Uuid, func
 
 from gym_bro.infrastructure.database.models.base import metadata
 
@@ -18,6 +18,6 @@ body_weights = Table(
         nullable=False,
     ),
     Column("weight", Integer, nullable=False),
-    Column("date", Date, nullable=False),
+    Column("created_at", DateTime, nullable=False, server_default=func.now()),
 )
-Index("ix_body_weights_profile_date", body_weights.c.profile_id, body_weights.c.date)
+Index("ix_body_weights_profile_date", body_weights.c.profile_id, body_weights.c.created_at)

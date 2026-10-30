@@ -11,7 +11,6 @@ class Profile:
     id: ProfileID = field(default_factory=ProfileID.new)
     last_name: str | None = None
     gender: Gender | None = None
-    weight: int | None = None
 
     def __post_init__(self) -> None:
         self.first_name = self.first_name.strip()
@@ -31,18 +30,15 @@ class Profile:
         first_name: str,
         last_name: str | None,
         gender: Gender,
-        weight: int,
     ) -> bool:
         if (
             self.first_name,
             self.last_name,
             self.gender,
-            self.weight,
-        ) == (first_name, last_name, gender, weight):
+        ) == (first_name, last_name, gender):
             return False
 
         self.first_name = first_name
         self.last_name = last_name
         self.gender = gender
-        self.weight = weight
         return True

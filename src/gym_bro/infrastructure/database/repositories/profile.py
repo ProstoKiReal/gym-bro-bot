@@ -1,7 +1,7 @@
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from gym_bro.application.interfaces.profile import ProfileRepository
+from gym_bro.application.interfaces.database.repositories.profile import ProfileRepository
 from gym_bro.domain.profile.entities import Profile
 from gym_bro.domain.profile.value_objects import ProfileID
 from gym_bro.infrastructure.database.models import ProfileModel
@@ -28,7 +28,6 @@ class AlchemyProfileRepository(ProfileRepository):
                 first_name=profile.first_name,
                 last_name=profile.last_name,
                 gender=profile.gender,
-                weight=profile.weight,
             )
         )
         await self.session.execute(query)
@@ -41,7 +40,6 @@ class AlchemyProfileRepository(ProfileRepository):
             telegram_id=profile.telegram_id,
             last_name=profile.last_name,
             gender=profile.gender,
-            weight=profile.weight,
         )
 
     @staticmethod
@@ -52,5 +50,4 @@ class AlchemyProfileRepository(ProfileRepository):
             last_name=profile.last_name,
             telegram_id=profile.telegram_id,
             gender=profile.gender,
-            weight=profile.weight,
         )

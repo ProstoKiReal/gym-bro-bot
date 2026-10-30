@@ -1,8 +1,8 @@
 from dishka import Provider, Scope
 
-from gym_bro.application.interfaces.profile import ProfileRepository
+from gym_bro.application.interfaces.database.repositories.profile import ProfileRepository
 from gym_bro.application.usecases.profile import RegisterProfileUseCase
-from gym_bro.application.interfaces.tx_manager import TXManager
+from gym_bro.application.interfaces.database.tx_manager import TXManager
 
 
 

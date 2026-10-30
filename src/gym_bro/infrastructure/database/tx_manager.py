@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from gym_bro.application.interfaces.tx_manager import TXManager
+from gym_bro.application.interfaces.database.tx_manager import TXManager
 
 
 class AlchemyTXManager(TXManager):
