@@ -82,3 +82,5 @@ mapper_registry.map_imperatively(
         ),
     },
 )
+
+__all__ = ["mapper_registry"]

@@ -1,3 +1,7 @@
+from dataclasses import dataclass
+from datetime import datetime
+from uuid import UUID
+
 from sqlalchemy import (
     CheckConstraint,
     Column,
@@ -12,8 +16,14 @@ from sqlalchemy import (
 from gym_bro.infrastructure.database.models.base import metadata
 
 
+@dataclass
 class WorkoutModel:
-    pass
+    id: UUID
+    profile_id: UUID
+    started_at: datetime
+    ended_at: datetime
+    template_id: UUID | None = None
+    note: str | None = None
 
 
 workouts = Table(

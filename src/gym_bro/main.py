@@ -3,7 +3,7 @@ import asyncio
 from gym_bro.presentation.bot.setup import run_bot
 
 
-async def main():
+async def main() -> None:
     await run_bot()
 
 

@@ -1,10 +1,18 @@
+from dataclasses import dataclass
+from datetime import datetime
+from uuid import UUID
+
 from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, Table, Uuid, func
 
 from gym_bro.infrastructure.database.models.base import metadata
 
 
+@dataclass
 class BodyWeightModel:
-    pass
+    id: UUID
+    profile_id: UUID
+    weight: int
+    created_at: datetime
 
 
 body_weights = Table(

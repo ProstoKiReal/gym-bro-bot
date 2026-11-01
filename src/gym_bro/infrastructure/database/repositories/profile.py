@@ -7,6 +7,7 @@ from gym_bro.application.interfaces.database.repositories.profile import (
 from gym_bro.domain.profile.entities import Profile
 from gym_bro.domain.profile.value_objects import ProfileID
 from gym_bro.infrastructure.database.models import ProfileModel
+from gym_bro.infrastructure.database.models.profile import profiles
 
 
 class AlchemyProfileRepository(ProfileRepository):
@@ -14,7 +15,7 @@ class AlchemyProfileRepository(ProfileRepository):
         self.session = session
 
     async def get_by_telegram_id(self, telegram_id: int) -> Profile | None:
-        query = select(ProfileModel).where(ProfileModel.telegram_id == telegram_id)
+        query = select(ProfileModel).where(profiles.c.telegram_id == telegram_id)
         model = (await self.session.execute(query)).scalar_one_or_none()
         return self._to_domain(model) if model is not None else None
 
@@ -25,7 +26,7 @@ class AlchemyProfileRepository(ProfileRepository):
     async def update(self, profile: Profile) -> None:
         query = (
             update(ProfileModel)
-            .where(ProfileModel.id == profile.id.value)
+            .where(profiles.c.id == profile.id.value)
             .values(
                 first_name=profile.first_name,
                 last_name=profile.last_name,

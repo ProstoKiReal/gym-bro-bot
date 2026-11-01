@@ -1,5 +1,9 @@
+from dataclasses import dataclass, field
+from uuid import UUID
+
 from sqlalchemy import Column, ForeignKey, Integer, String, Table, Uuid
 
+from gym_bro.domain.workout.value_objects import Equipment
 from gym_bro.infrastructure.database.models.base import metadata
 from gym_bro.infrastructure.database.models.types import (
     equipment_type,
@@ -7,8 +11,15 @@ from gym_bro.infrastructure.database.models.types import (
 )
 
 
+@dataclass
 class WorkoutExerciseModel:
-    pass
+    id: UUID
+    workout_id: UUID
+    exercise_id: UUID
+    position: int
+    name: str
+    equipment: Equipment
+    planned_sets: list[dict[str, int | None]] = field(default_factory=list)
 
 
 workout_exercises = Table(

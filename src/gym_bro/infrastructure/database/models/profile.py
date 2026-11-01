@@ -1,3 +1,6 @@
+from dataclasses import dataclass
+from uuid import UUID
+
 from sqlalchemy import (
     BigInteger,
     Column,
@@ -8,12 +11,19 @@ from sqlalchemy import (
     Uuid,
 )
 
+from gym_bro.domain.profile.value_objects import Gender
 from gym_bro.infrastructure.database.models.base import metadata
 from gym_bro.infrastructure.database.models.types import profile_gender_type
 
 
+@dataclass
 class ProfileModel:
-    pass
+    id: UUID
+    first_name: str
+    telegram_id: int
+    last_name: str | None = None
+    gender: Gender | None = None
+    weight: int | None = None
 
 
 profiles = Table(

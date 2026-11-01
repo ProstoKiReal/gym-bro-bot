@@ -6,7 +6,7 @@ router = Router()
 
 
 @router.message(Command("plan"))
-async def command_plan(message: Message):
+async def command_plan(message: Message) -> None:
     """
     1) Виджет: Изменить текущий план | Создать план
 
@@ -31,7 +31,7 @@ async def command_plan(message: Message):
 
 
 @router.message(Command("workout"))
-async def command_workout(message: Message):
+async def command_workout(message: Message) -> None:
     """
     1) Есть программа?
     2) Если нет, то просим создать (кнопка создать) -> Кидает на /plan

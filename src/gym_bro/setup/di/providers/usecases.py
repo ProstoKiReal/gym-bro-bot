@@ -1,5 +1,8 @@
 from dishka import Provider, Scope
 
+from gym_bro.application.interfaces.database.repositories.body_weight import (
+    BodyWeightRepository,
+)
 from gym_bro.application.interfaces.database.repositories.profile import (
     ProfileRepository,
 )
@@ -8,10 +11,14 @@ from gym_bro.application.usecases.profile import RegisterProfileUseCase
 
 
 def register_profile_use_case(
-    profile_repository: ProfileRepository, tx_manager: TXManager
+    profile_repository: ProfileRepository,
+    body_weight_repository: BodyWeightRepository,
+    tx_manager: TXManager,
 ) -> RegisterProfileUseCase:
     return RegisterProfileUseCase(
-        profile_repository=profile_repository, tx_manager=tx_manager
+        profile_repository=profile_repository,
+        body_weight_repository=body_weight_repository,
+        tx_manager=tx_manager,
     )
 
 

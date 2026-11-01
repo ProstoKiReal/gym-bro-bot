@@ -8,3 +8,11 @@ ruff-format:
 	uv run ruff format src
 
 ruff: ruff-format ruff-lint
+
+mypy:
+	uv run mypy
+
+bandit:
+	uv run bandit -q -r src
+
+check: ruff bandit mypy

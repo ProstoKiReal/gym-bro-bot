@@ -1,3 +1,6 @@
+from dataclasses import dataclass, field
+from uuid import UUID, uuid4
+
 from sqlalchemy import (
     CheckConstraint,
     Column,
@@ -6,8 +9,10 @@ from sqlalchemy import (
     String,
     Table,
     Uuid,
+    func,
 )
 
+from gym_bro.domain.workout.value_objects import Equipment
 from gym_bro.infrastructure.database.models.base import metadata
 from gym_bro.infrastructure.database.models.types import (
     equipment_type,
@@ -15,14 +20,21 @@ from gym_bro.infrastructure.database.models.types import (
 )
 
 
+@dataclass
 class PlannedExerciseModel:
-    pass
+    template_id: UUID
+    position: int
+    exercise_id: UUID
+    name: str
+    equipment: Equipment
+    sets: list[dict[str, int | None]] = field(default_factory=list)
+    id: UUID = field(default_factory=uuid4)
 
 
 planned_exercises = Table(
     "workout_template_exercises",
     metadata,
-    Column("id", Integer, primary_key=True, autoincrement=True),
+    Column("id", Uuid, primary_key=True, server_default=func.gen_random_uuid()),
     Column(
         "template_id",
         Uuid,

@@ -1,3 +1,4 @@
+from pydantic import Field
 from pydantic_settings import BaseSettings
 
 from gym_bro.setup.config.app import APPConfig
@@ -7,10 +8,10 @@ from gym_bro.setup.config.db import DBConfig
 
 
 class Config(BaseSettings):
-    db: DBConfig = DBConfig()
-    app: APPConfig = APPConfig()
-    bot: BotConfig = BotConfig()
-    cache: CacheConfig = CacheConfig()
+    db: DBConfig = Field(default_factory=DBConfig)
+    app: APPConfig = Field(default_factory=APPConfig)
+    bot: BotConfig = Field(default_factory=BotConfig)
+    cache: CacheConfig = Field(default_factory=CacheConfig)
 
 
 config: Config = Config()

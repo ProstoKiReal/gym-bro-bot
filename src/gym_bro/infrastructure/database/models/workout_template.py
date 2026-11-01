@@ -1,10 +1,18 @@
+from dataclasses import dataclass
+from uuid import UUID
+
 from sqlalchemy import Column, ForeignKey, Index, Integer, String, Table, Uuid
 
 from gym_bro.infrastructure.database.models.base import metadata
 
 
+@dataclass
 class WorkoutTemplateModel:
-    pass
+    id: UUID
+    profile_id: UUID
+    name: str
+    program_id: UUID | None = None
+    program_position: int | None = None
 
 
 workout_templates = Table(

@@ -7,7 +7,7 @@ class WeightFilter(BaseFilter):
         self.min_kg = min_kg
         self.max_kg = max_kg
 
-    async def __call__(self, message: Message) -> bool | dict:
+    async def __call__(self, message: Message) -> bool | dict[str, float]:
         if not message.text:
             return False
 
