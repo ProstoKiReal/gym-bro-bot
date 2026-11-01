@@ -21,3 +21,6 @@ dependencies = [
 dev = [
     "ruff>=0.17.3",
 ]
+
+[tool.ruff]
+src = ["src"]
