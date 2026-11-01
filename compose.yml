@@ -17,9 +17,14 @@ services:
       - DB_POOL_SIZE=${DB_POOL_SIZE}
       - DB_POOL_MAX_OVERFLOW=${DB_POOL_MAX_OVERFLOW}
       - APP_MODE=${APP_MODE}
+      - CACHE_HOST=${CACHE_HOST}
+      - CACHE_PORT=${CACHE_PORT}
+      - CACHE_PASSWORD=${CACHE_PASSWORD}
     command: sh -c "alembic upgrade head  && python src/gym_bro/main.py"
     depends_on:
       db:
+        condition: service_healthy
+      cache:
         condition: service_healthy
     networks:
       - app_net
@@ -44,9 +49,27 @@ services:
       - app_net
     restart: always
 
+  cache:
+    image: redis:8-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - cache-data:/data
+    environment:
+      - CACHE_PASSWORD=${CACHE_PASSWORD}
+    command: redis-server --requirepass ${CACHE_PASSWORD}
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli -a $$CACHE_PASSWORD ping | grep PONG" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app_net
+
 networks:
   app_net:
     driver: bridge
 
 volumes:
   db-data:
+  cache-data:
