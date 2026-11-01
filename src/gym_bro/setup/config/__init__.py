@@ -1,7 +1,6 @@
-from gym_bro.setup.config.config import config, Config
-
+from gym_bro.setup.config.config import Config, config
 
 __all__ = [
-    "config",
     "Config",
+    "config",
 ]

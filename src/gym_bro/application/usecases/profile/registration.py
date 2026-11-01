@@ -1,12 +1,16 @@
-from gym_bro.domain.profile.entities import Profile
-from gym_bro.domain.health.entities import BodyWeight
-from gym_bro.application.interfaces.database.repositories.profile import ProfileRepository
-from gym_bro.application.interfaces.database.repositories.body_weight import BodyWeightRepository
 from gym_bro.application.dtos.profile import (
     RegisterProfileRequestDTO,
     RegisterProfileResponseDTO,
 )
+from gym_bro.application.interfaces.database.repositories.body_weight import (
+    BodyWeightRepository,
+)
+from gym_bro.application.interfaces.database.repositories.profile import (
+    ProfileRepository,
+)
 from gym_bro.application.interfaces.database.tx_manager import TXManager
+from gym_bro.domain.health.entities import BodyWeight
+from gym_bro.domain.profile.entities import Profile
 from gym_bro.domain.profile.value_objects import ProfileID
 
 

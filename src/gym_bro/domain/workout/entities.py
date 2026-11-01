@@ -1,10 +1,11 @@
 from dataclasses import dataclass, field
+
 from gym_bro.domain.workout.errors import InvalidNameError
 from gym_bro.domain.workout.value_objects import (
+    RPE,
     Equipment,
     ExerciseID,
     Reps,
-    RPE,
     SetID,
     Weight,
     WorkoutExerciseID,

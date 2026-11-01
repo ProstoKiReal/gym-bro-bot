@@ -2,7 +2,9 @@ from uuid import UUID
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from gym_bro.application.interfaces.database.repositories.body_weight import BodyWeightRepository
+from gym_bro.application.interfaces.database.repositories.body_weight import (
+    BodyWeightRepository,
+)
 from gym_bro.domain.health.entities import BodyWeight
 from gym_bro.infrastructure.database.models.body_weight import BodyWeightModel
 

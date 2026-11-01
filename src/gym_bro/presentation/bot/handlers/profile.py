@@ -1,16 +1,15 @@
-from aiogram import Router, F
+from aiogram import F, Router
 from aiogram.filters import CommandStart
-from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.context import FSMContext
+from aiogram.types import CallbackQuery, Message
 from dishka.integrations.aiogram import FromDishka
 
-from gym_bro.application.usecases.profile import RegisterProfileUseCase
 from gym_bro.application.dtos.profile import RegisterProfileRequestDTO
+from gym_bro.application.usecases.profile import RegisterProfileUseCase
 from gym_bro.domain.profile.value_objects import Gender
+from gym_bro.presentation.bot.filters.profile.registration import WeightFilter
 from gym_bro.presentation.bot.fsms.profile.registration import RegistrationSate
 from gym_bro.presentation.bot.keyboards.profile.registration import inline_choose_gender
-from gym_bro.presentation.bot.filters.profile.registration import WeightFilter
-
 
 router = Router()
 
@@ -49,7 +48,7 @@ async def enter_weight(
 ):
     state_data = await state.get_data()
     user = message.from_user
-    weight = int(round(weight * 1000))
+    weight = round(weight * 1000)
 
     profile_data = RegisterProfileRequestDTO(
         telegram_id=user.id,

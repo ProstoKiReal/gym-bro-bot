@@ -12,6 +12,4 @@ class APPConfig(BaseSettings):
 
     @property
     def debug(self) -> bool:
-        if self.MODE == "dev":
-            return True
-        return False
+        return self.MODE == "dev"

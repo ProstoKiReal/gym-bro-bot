@@ -1,11 +1,15 @@
 from dishka import Provider, Scope
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from gym_bro.application.interfaces.database.repositories.profile import ProfileRepository
-from gym_bro.application.interfaces.database.repositories.body_weight import BodyWeightRepository
+from gym_bro.application.interfaces.database.repositories.body_weight import (
+    BodyWeightRepository,
+)
+from gym_bro.application.interfaces.database.repositories.profile import (
+    ProfileRepository,
+)
 from gym_bro.infrastructure.database.repositories import (
-    AlchemyProfileRepository,
     AlchemyBodyWeightRepository,
+    AlchemyProfileRepository,
 )
 
 

@@ -1,7 +1,7 @@
 from collections.abc import AsyncIterator
 
-from sqlalchemy.ext.asyncio import AsyncSession
 from dishka import Provider, Scope
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from gym_bro.infrastructure.database.connection import session_factory
 

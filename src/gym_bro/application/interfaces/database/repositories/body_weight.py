@@ -1,6 +1,6 @@
-from uuid import UUID
-from typing import Protocol
 from abc import abstractmethod
+from typing import Protocol
+from uuid import UUID
 
 from gym_bro.domain.health.entities import BodyWeight
 

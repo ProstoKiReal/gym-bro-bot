@@ -1,9 +1,9 @@
-from sqlalchemy import Enum as SAEnum, JSON
+from sqlalchemy import JSON
+from sqlalchemy import Enum as SAEnum
 from sqlalchemy.ext.mutable import MutableList
 
 from gym_bro.domain.profile.value_objects import Gender
 from gym_bro.domain.workout.value_objects import Equipment
-
 
 profile_gender_type = SAEnum(
     Gender,

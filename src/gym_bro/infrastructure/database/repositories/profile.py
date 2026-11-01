@@ -1,7 +1,9 @@
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from gym_bro.application.interfaces.database.repositories.profile import ProfileRepository
+from gym_bro.application.interfaces.database.repositories.profile import (
+    ProfileRepository,
+)
 from gym_bro.domain.profile.entities import Profile
 from gym_bro.domain.profile.value_objects import ProfileID
 from gym_bro.infrastructure.database.models import ProfileModel

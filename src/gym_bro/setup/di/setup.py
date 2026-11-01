@@ -1,10 +1,10 @@
-from typing import Iterable
+from collections.abc import Iterable
 
 from aiogram import Dispatcher
+from dishka import Provider, make_async_container
 from dishka.integrations.aiogram import setup_dishka
-from dishka import make_async_container, Provider
 
-from gym_bro.setup.config import config, Config
+from gym_bro.setup.config import Config, config
 
 
 def create_dishka(providers: Iterable[Provider], dp: Dispatcher) -> None:

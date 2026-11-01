@@ -30,7 +30,6 @@ from gym_bro.infrastructure.database.models.workout_template import (
     workout_templates,
 )
 
-
 mapper_registry.map_imperatively(ProfileModel, profiles)
 mapper_registry.map_imperatively(BodyWeightModel, body_weights)
 mapper_registry.map_imperatively(ExerciseModel, exercises)

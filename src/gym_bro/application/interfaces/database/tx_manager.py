@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Self
 
+
 class TXManager(ABC):
     async def __aenter__(self) -> Self:
         return self

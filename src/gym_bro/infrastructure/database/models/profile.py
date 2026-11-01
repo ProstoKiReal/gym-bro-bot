@@ -1,4 +1,12 @@
-from sqlalchemy import BigInteger, Column, Integer, String, Table, UniqueConstraint, Uuid
+from sqlalchemy import (
+    BigInteger,
+    Column,
+    Integer,
+    String,
+    Table,
+    UniqueConstraint,
+    Uuid,
+)
 
 from gym_bro.infrastructure.database.models.base import metadata
 from gym_bro.infrastructure.database.models.types import profile_gender_type

@@ -1,13 +1,13 @@
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 
 from gym_bro.domain.profile.value_objects import ProfileID
+from gym_bro.domain.workout.entities import PlannedExercise, WorkoutExercise
 from gym_bro.domain.workout.errors import (
     InvalidNameError,
     InvalidWorkoutTemplateOwnerError,
     InvalidWorkoutTimeError,
 )
-from gym_bro.domain.workout.entities import PlannedExercise, WorkoutExercise
 from gym_bro.domain.workout.value_objects import (
     WorkoutID,
     WorkoutProgramID,
@@ -33,7 +33,7 @@ class Workout:
         self.exercises.append(exercise)
 
     def finish(self) -> None:
-        ended_at = datetime.utcnow()
+        ended_at = datetime.now(UTC)
 
         if ended_at < self.started_at:
             raise InvalidWorkoutTimeError("Workout cannot end before it starts.")

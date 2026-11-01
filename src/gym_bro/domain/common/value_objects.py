@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from uuid import UUID, uuid4
 from typing import Self
+from uuid import UUID, uuid4
 
 
 @dataclass(frozen=True, slots=True)
