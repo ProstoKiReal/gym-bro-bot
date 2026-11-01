@@ -29,7 +29,9 @@ class RegisterProfileUseCase:
         self,
         registration_data: RegisterProfileRequestDTO,
     ) -> RegisterProfileResponseDTO:
-        current = await self.profile_repository.get_by_telegram_id(registration_data.telegram_id)
+        current = await self.profile_repository.get_by_telegram_id(
+            registration_data.telegram_id
+        )
 
         async with self.tx_manager as tx:
             if current is None:
@@ -46,14 +48,18 @@ class RegisterProfileUseCase:
 
             weight = self._to_body_weight_domain(registration_data, current.id)
 
-            body_weight = await self.body_weight_repository.add(current.id.value, weight)
+            body_weight = await self.body_weight_repository.add(
+                current.id.value, weight
+            )
 
             await tx.commit()
 
             return self._to_registration_dto(current, body_weight)
 
     @staticmethod
-    def _to_registration_dto(profile: Profile, body_weight: BodyWeight) -> RegisterProfileResponseDTO:
+    def _to_registration_dto(
+        profile: Profile, body_weight: BodyWeight
+    ) -> RegisterProfileResponseDTO:
         return RegisterProfileResponseDTO(
             id=profile.id.value,
             first_name=profile.first_name,

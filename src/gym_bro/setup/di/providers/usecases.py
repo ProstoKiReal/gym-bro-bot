@@ -7,8 +7,12 @@ from gym_bro.application.interfaces.database.tx_manager import TXManager
 from gym_bro.application.usecases.profile import RegisterProfileUseCase
 
 
-def register_profile_use_case(profile_repository: ProfileRepository, tx_manager: TXManager) -> RegisterProfileUseCase:
-    return RegisterProfileUseCase(profile_repository=profile_repository, tx_manager=tx_manager)
+def register_profile_use_case(
+    profile_repository: ProfileRepository, tx_manager: TXManager
+) -> RegisterProfileUseCase:
+    return RegisterProfileUseCase(
+        profile_repository=profile_repository, tx_manager=tx_manager
+    )
 
 
 def use_cases_provider() -> Provider:

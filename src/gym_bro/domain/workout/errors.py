@@ -3,7 +3,9 @@ from gym_bro.domain.common.errors import BaseDomainError
 
 class InvalidWeightError(BaseDomainError):
     def __init__(self, weight: object):
-        super().__init__(f"Weight must be a non-negative integer number of grams; got {weight}.")
+        super().__init__(
+            f"Weight must be a non-negative integer number of grams; got {weight}."
+        )
 
 
 class InvalidRepsError(BaseDomainError):
@@ -13,7 +15,9 @@ class InvalidRepsError(BaseDomainError):
 
 class InvalidRPEError(BaseDomainError):
     def __init__(self, rpe: object):
-        super().__init__(f"RPE must be an integer number of tenths between 10 and 100; got {rpe}.")
+        super().__init__(
+            f"RPE must be an integer number of tenths between 10 and 100; got {rpe}."
+        )
 
 
 class InvalidNameError(BaseDomainError):

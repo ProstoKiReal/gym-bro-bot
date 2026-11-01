@@ -1,0 +1,46 @@
+target-version = "py313"
+src = ["src"]
+line-length = 88
+
+[lint]
+select = [
+    "F",     # Pyflakes
+    "E",     # pycodestyle errors
+    "W",     # pycodestyle warnings
+    "I",     # isort
+    "N",     # pep8-naming
+    "UP",    # pyupgrade
+    "B",     # flake8-bugbear
+    "SIM",   # flake8-simplify
+    "ASYNC", # flake8-async
+    "C4",    # flake8-comprehensions
+    "PIE",   # flake8-pie
+    "DTZ",   # flake8-datetimez
+    "RUF",   # Ruff-specific
+    "RET",   # flake8-return
+    "ARG",   # unused function arguments
+    "PERF",  # perflint
+    "FURB",  # refurb
+    "LOG",   # flake8-logging
+    "SLOT",  # flake8-slots
+]
+ignore = [
+    "E501",   # line length is handled by the formatter
+    "RUF001", # Cyrillic in user-facing strings is expected
+    "RUF002", # Cyrillic in docstrings is expected
+    "RUF003", # Cyrillic in comments is expected
+]
+
+[lint.per-file-ignores]
+"src/gym_bro/infrastructure/database/migrations/versions/*.py" = [
+    "I001",
+    "W291",
+]
+
+[lint.isort]
+known-first-party = ["gym_bro"]
+
+[format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true

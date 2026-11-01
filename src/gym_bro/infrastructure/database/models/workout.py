@@ -26,7 +26,9 @@ workouts = Table(
         ForeignKey("profiles.id", ondelete="CASCADE"),
         nullable=False,
     ),
-    Column("template_id", Uuid, ForeignKey("workout_templates.id", ondelete="SET NULL")),
+    Column(
+        "template_id", Uuid, ForeignKey("workout_templates.id", ondelete="SET NULL")
+    ),
     Column("started_at", DateTime, nullable=False),
     Column("ended_at", DateTime, nullable=False),
     Column("note", Text),

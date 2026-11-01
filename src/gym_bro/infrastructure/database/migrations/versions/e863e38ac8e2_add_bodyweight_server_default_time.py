@@ -5,11 +5,12 @@ Revises: ce9287f02971
 Create Date: 2026-10-30 18:03:20.797658
 
 """
+
 from collections.abc import Sequence
 
 # revision identifiers, used by Alembic.
-revision: str = 'e863e38ac8e2'
-down_revision: str | Sequence[str] | None = 'ce9287f02971'
+revision: str = "e863e38ac8e2"
+down_revision: str | Sequence[str] | None = "ce9287f02971"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

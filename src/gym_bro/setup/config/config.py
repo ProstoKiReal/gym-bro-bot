@@ -12,4 +12,5 @@ class Config(BaseSettings):
     bot: BotConfig = BotConfig()
     cache: CacheConfig = CacheConfig()
 
+
 config: Config = Config()

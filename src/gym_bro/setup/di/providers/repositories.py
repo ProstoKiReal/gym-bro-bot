@@ -16,8 +16,10 @@ from gym_bro.infrastructure.database.repositories import (
 def profile_repository(session: AsyncSession) -> ProfileRepository:
     return AlchemyProfileRepository(session)
 
+
 def body_weight_repository(session: AsyncSession) -> BodyWeightRepository:
     return AlchemyBodyWeightRepository(session)
+
 
 def repositories_provider() -> Provider:
     provider = Provider(scope=Scope.REQUEST)

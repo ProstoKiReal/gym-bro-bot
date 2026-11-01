@@ -27,6 +27,7 @@ async def start_registration(
         reply_markup=inline_choose_gender().as_markup(),
     )
 
+
 @router.callback_query(
     RegistrationSate.gender,
     F.data.in_({"gender:man", "gender:woman"}),

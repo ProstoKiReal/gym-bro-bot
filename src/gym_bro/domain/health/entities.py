@@ -13,7 +13,6 @@ class BodyWeight:
     id: BodyWeightID = field(default_factory=BodyWeightID.new)
     created_at: datetime = field(default_factory=datetime.utcnow)
 
-
     def __post_init__(self):
         if self.weight <= 0:
             raise InvalidWeightError(self.weight)
